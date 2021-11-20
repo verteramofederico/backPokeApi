@@ -11,10 +11,12 @@ const pokeapiController = {
         try {
             fetch(`https://pokeapi.co/api/v2/pokemon/${idParams}`)
             .then(response => response.json())
-            .then(data => datapoke = data)
+            .then(data => {datapoke = data
             res.status(200).json({datapoke})
+            })
+            
         }catch (error) {
-            console.log(err);
+            console.log(error);
             res.sendStatus(500);  
         }}
         if (idParams === null || idParams === undefined) {
