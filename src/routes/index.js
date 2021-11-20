@@ -3,7 +3,7 @@ var router = express.Router();
 
 const pokeapi = require("../controllers/pokeapi")
 
-router.get("/api/:id", pokeapi.getById);
-router.get("/api", pokeapi.getAll);
+router.get("/:id", pokeapi.getById);
+router.get("/", pokeapi.getAll);
 
 module.exports = router;

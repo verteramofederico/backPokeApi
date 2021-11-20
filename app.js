@@ -11,11 +11,19 @@ app.use(express.json());
 app.use(cors())
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexRouter);
+app.use(express.static(path.join(__dirname, 'build')));
+
+app.use('/api', indexRouter);
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'build', 'index.html'));
+});
 
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+app.use(express.static("public"))
 
 // error handler
 app.use(function(err, req, res, next) {
